@@ -12,3 +12,90 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+/*
+Використовуй масив об'єктів images для створення елементів <img>, вкладених в <li>. 
+Для створення розмітки використовуй шаблонні рядки і метод insertAdjacentHTML().
+
+1)Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
+2)Додай мінімальне оформлення галереї флексбоксами або грідами через CSS класи.
+*/
+
+//пошукати ул
+const galleryEl = document.querySelector('.gallery');
+
+const makeGallery = ({url, alt, width = 200} = {}) => {
+  return `
+  <li class="gallery_item">
+    <img src="${url}" alt="${alt}" width="${width}">
+  </li>
+  `;
+
+};
+//перебрав масив
+const galleryCardArr = images.map(el => {
+  return makeGallery(el);
+});
+
+//вставка карток на сторінку
+galleryEl.insertAdjacentHTML('afterbegin', galleryCardArr.join(''));
+
+
+//додаю флекси і якісь дані цсс
+galleryEl.style.display = 'flex';
+galleryEl.style.justifyContent = 'space-between';
+galleryEl.style.listStyle = 'none';
+
+
+
+
+
+
+
+
+
+/*
+const makeGallery = ({url, alt, width = 200} = {}) => {
+  //створюю лі
+  const listItemEl = document.createElement('li');
+  listItemEl.classList.add('gallery_item');
+  //створюю зображення
+  const imgEl = document.createElement('img');
+
+  imgEl.src = url;
+  imgEl.alt = alt;
+  imgEl.width = width;
+  listItemEl.append(imgEl);
+
+  return listItemEl;
+};
+
+
+const galleryCardArr = images.map(el => {
+  return makeGallery(el);
+});
+
+
+//вставка карток на сторінку
+
+galleryEl.append(...galleryCardArr);
+*/
+
+
+
+
+
+
+
+//створити лі та додати її клас
+// const listItemEl = document.createElement('li');
+// listItemEl.classList.add('gallery_item');
+
+//створити зображення з  альтернативним текстом
+// const imgEl = document.createElement('images');
+
+// imgEl.url = url;
+// imgEl.alt = alt;
+
+// listItemEl.append(imgEl);
+//вставити все з ул
