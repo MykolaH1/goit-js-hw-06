@@ -18,14 +18,14 @@ const formEl = document.querySelector('.login-form');
 
 let formGoEl = {};
 
-formEl.addEventListener ('input', (event) => {
+formEl.addEventListener ('submit', (event) => {
 
    event.preventDefault();
   const {
     elements: { email, password }
   } = event.currentTarget;
 
-   if (email.value === '' && password.value === '') {
+   if (email.value === '' || password.value === '') {
       return alert ('всі поля повинні бути заповнені');
    } else {
       formGoEl.email = email.value;
